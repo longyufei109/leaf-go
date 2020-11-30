@@ -1,0 +1,14 @@
+mode: 2 # 1:snowflake  2: segment
+snowflake: # mode=1时, 需要配置 snowflake
+  workerId: 1 # 目前只支持从配置文件中读取workerId, 如果希望从zookeeper等中获取workerId，可设此值为-1，并自行实现
+segment: # mode=2时, 需要配置 segment
+  cacheDir: "./cache/" # 停服时用于缓存segmentBuf的目录，文件名为segmentBuf的key + ".json"
+db: # mode=2时，需要配置db
+  type: 1 # 1: mysql  2:mssql 3:redis ... 目前只支持 mysql
+  dataSource:
+  - "root:123456@tcp(localhost:3306)/test?charset=utf8"
+http: # http server 监听地址
+  addr: ":8080"
+  requestPath: "/api/id"
+  query: "key"  # url请求路径 =>  http://ip:port/api/id?key=xxx
+
