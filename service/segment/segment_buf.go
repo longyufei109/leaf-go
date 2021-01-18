@@ -3,12 +3,12 @@ package segment
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/zzonee/leaf-go/config"
-	"github.com/zzonee/leaf-go/entity"
-	"github.com/zzonee/leaf-go/log"
-	"github.com/zzonee/leaf-go/repo"
-	"github.com/zzonee/leaf-go/util"
 	"io/ioutil"
+	"leaf-go/config"
+	"leaf-go/entity"
+	"leaf-go/log"
+	"leaf-go/repo"
+	"leaf-go/util"
 	"os"
 	"path/filepath"
 	"sync"
@@ -306,7 +306,7 @@ func (sb *segmentBuf) load() error {
 	sb.nextSegment().max = sbCache.Segs[sb.nextPos()].Max
 	sb.nextSegment().step = sbCache.Segs[sb.nextPos()].Step
 	sb.nextSegment().value = util.AtomicInt64(sbCache.Segs[sb.nextPos()].Value)
-	sb.isNextReady.Set(sb.nextSegment().idle()>0) // or sb.nextSegment().idle()==sb.nextSegment().step
+	sb.isNextReady.Set(sb.nextSegment().idle() > 0) // or sb.nextSegment().idle()==sb.nextSegment().step
 	sb.initSuccess()
 	return nil
 }

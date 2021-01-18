@@ -1,8 +1,8 @@
 package repo
 
 import (
-	"github.com/zzonee/leaf-go/config"
-	"github.com/zzonee/leaf-go/entity"
+	"leaf-go/config"
+	"leaf-go/entity"
 )
 
 type Repo interface {

@@ -1,7 +1,7 @@
 package segment
 
 import (
-	"github.com/zzonee/leaf-go/util"
+	"leaf-go/util"
 )
 
 type segment struct {

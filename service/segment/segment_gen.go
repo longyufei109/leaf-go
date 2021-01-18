@@ -2,8 +2,8 @@ package segment
 
 import (
 	"fmt"
-	"github.com/zzonee/leaf-go/repo"
-	"github.com/zzonee/leaf-go/service"
+	"leaf-go/repo"
+	"leaf-go/service"
 	"sync"
 	"time"
 )
@@ -11,7 +11,7 @@ import (
 type segmentGen struct {
 	repo  repo.Repo
 	cache sync.Map
-	stop chan struct{}
+	stop  chan struct{}
 }
 
 func New(repo repo.Repo) service.IdGenerator {
@@ -87,7 +87,6 @@ func (s *segmentGen) Gen(key string) (id int64, err error) {
 	}
 	return sb.(*segmentBuf).nextId()
 }
-
 
 func (s *segmentGen) Shutdown() {
 	close(s.stop)

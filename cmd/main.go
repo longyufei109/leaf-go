@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/zzonee/leaf-go/config"
-	"github.com/zzonee/leaf-go/server"
+	"leaf-go/config"
+	"leaf-go/server"
 )
 
 func main() {

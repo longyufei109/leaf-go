@@ -3,7 +3,7 @@ package snowflake
 
 import (
 	"fmt"
-	"github.com/zzonee/leaf-go/service"
+	"leaf-go/service"
 	"math/rand"
 	"runtime"
 	"sync"
