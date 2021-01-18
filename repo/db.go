@@ -4,9 +4,9 @@ import (
 	"database/sql"
 	"fmt"
 	_ "github.com/go-sql-driver/mysql"
-	"leaf-go/config"
-	"leaf-go/entity"
-	"leaf-go/log"
+	"github.com/longyufei109/leaf-go/config"
+	"github.com/longyufei109/leaf-go/entity"
+	"github.com/longyufei109/leaf-go/log"
 	"sync/atomic"
 )
 

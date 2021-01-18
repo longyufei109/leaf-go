@@ -2,8 +2,8 @@ package segment
 
 import (
 	"fmt"
-	"leaf-go/repo"
-	"leaf-go/service"
+	"github.com/longyufei109/leaf-go/repo"
+	"github.com/longyufei109/leaf-go/service"
 	"sync"
 	"time"
 )

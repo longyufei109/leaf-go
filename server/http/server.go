@@ -2,8 +2,8 @@ package http
 
 import (
 	"encoding/json"
-	"leaf-go/config"
-	"leaf-go/service"
+	"github.com/longyufei109/leaf-go/config"
+	"github.com/longyufei109/leaf-go/service"
 	"log"
 	stdhttp "net/http"
 )
