@@ -9,6 +9,7 @@ import (
 	"github.com/longyufei109/leaf-go/service"
 	"github.com/longyufei109/leaf-go/service/segment"
 	"github.com/longyufei109/leaf-go/service/snowflake"
+	"github.com/longyufei109/leaf-go/service/snowflake/zookeeper"
 	"os"
 	"os/signal"
 	"syscall"
@@ -18,7 +19,12 @@ var g service.IdGenerator
 
 func Start() {
 	if config.Global.Mode == config.Mode_Snowflake {
-		g = newSnowflake()
+		if config.Global.Snowflake.WorkerId < 0 {
+			g = zookeeper.NewSnowflakeZookeeper(&config.Global.Zookeeper)
+		} else {
+			g = newSnowflake()
+		}
+
 	} else if config.Global.Mode == config.Mode_Segment {
 		g = newSegment()
 	} else {

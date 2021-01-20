@@ -20,6 +20,7 @@ type Config struct {
 
 	Segment   Segment
 	Snowflake Snowflake
+	Zookeeper Zookeeper
 	DB        DBConfig
 
 	Http HttpConfig
@@ -29,6 +30,14 @@ type Snowflake struct {
 	WorkerId int64
 
 	WorkerIdGetter func() int64
+}
+
+type Zookeeper struct {
+	LeafName string
+	Address  string
+	Port     string
+	User     string
+	Pwd      string
 }
 
 type Segment struct {
@@ -63,6 +72,10 @@ func Init() error {
 		} else if Global.Snowflake.WorkerId >= 0 { // 否则 需要自己设置 Snowflake.WorkerIdGetter
 			Global.Snowflake.WorkerIdGetter = func() int64 {
 				return Global.Snowflake.WorkerId
+			}
+		} else {
+			if err := v.UnmarshalKey("zookeeper", &Global.Zookeeper); err != nil {
+				return err
 			}
 		}
 	} else if Global.Mode == Mode_Segment {
