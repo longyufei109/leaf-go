@@ -2,11 +2,11 @@ mode: 1 # 1:snowflake  2: segment
 snowflake: # mode=1时, 需要配置 snowflake
   workerId: -1 # 目前只支持从配置文件中读取workerId, 如果希望从zookeeper等中获取workerId，可设此值为-1，并自行实现
 zookeeper : #mode=1时 且workerId =-1 时配置
-  leafName : com.mhx.leaf
-  address: 192.144.211.28:2181
-  port: 8692
-  user: mhx-zookeeper
-  pwd: MTFbP0CogrgSMM5smhx3GtmVPSAacFYP
+  leafName :
+  address:
+  port:
+  user:
+  pwd:
 segment: # mode=2时, 需要配置 segment
   cacheDir: "./cache/" # 停服时用于缓存segmentBuf的目录，文件名为segmentBuf的key + ".json"
 db: # mode=2时，需要配置db
