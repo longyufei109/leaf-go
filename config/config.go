@@ -1,7 +1,6 @@
 package config
 
 import (
-	"fmt"
 	"github.com/spf13/viper"
 )
 
@@ -64,7 +63,12 @@ func Init() error {
 	if err := v.ReadInConfig(); err != nil {
 		return err
 	}
+	return InitByViper(v)
 
+}
+
+func InitByViper(viper *viper.Viper) error {
+	v := viper
 	Global.Mode = v.GetInt("mode")
 	if Global.Mode == Mode_Snowflake {
 		if err := v.UnmarshalKey("snowflake", &Global.Snowflake); err != nil {
@@ -85,13 +89,6 @@ func Init() error {
 		if err := v.UnmarshalKey("db", &Global.DB); err != nil {
 			return err
 		}
-	}
-
-	if err := v.UnmarshalKey("http", &Global.Http); err != nil {
-		return err
-	} else if Global.Http.RequestPath == "" || Global.Http.Query == "" {
-		err = fmt.Errorf("http config not valid")
-		return err
 	}
 	return nil
 }
